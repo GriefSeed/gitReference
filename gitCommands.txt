@@ -65,8 +65,8 @@
 			git branch -v
 			git checkout -b <branchname>
 			git branch -d <branchname>
-			git push <remote-name> : <branchname>
-			git push <remote-name> <local-branch> : <remote-branch>
+			git push <remote-name>:<branchname>
+			git push <remote-name> <local-branch>:<remote-branch>
 		git checkout
 			git checkout <branchname>
 		git merge
@@ -221,10 +221,10 @@ git branch -d <branchname>
 git checkout -b <branch> <SHA-1>
 恢复被删除的branch, 不过你要输入存在着该branch的commit的SHA-1
 
-git push <remote-name> : <branchname>
+git push <remote-name>:<branchname>
 只是快速将远程分支删除或添加
 
-git push <remote-name> <local-branch> : <remote-branch>
+git push <remote-name> <local-branch>:<remote-branch>
 将本地分支改动推送到远程分支
 
 git checkout（类别说明）

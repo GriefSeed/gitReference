@@ -65,8 +65,8 @@
 			git branch -v
 			git checkout -b <branchname>
 			git branch -d <branchname>
-			git push <remote-name>:<branchname>
-			git push <remote-name> <local-branch>:<remote-branch>
+			git push <remote-name> : <branchname>
+			git push <remote-name> <local-branch> : <remote-branch>
 		git checkout
 			git checkout <branchname>
 		git merge
@@ -81,12 +81,21 @@
 		git tag
 			git tag -a <版本号>
 			git tag -a <版本号> <SHA-1>
+                        git tag -d <版本号>
+                        git push --delete origin <tagname>
+                        git tag -l
+                            git tag -l <匹配表达式>
+                        git show <版本号>
+                        git push origin <tagname>
+                        git checkout -b <branchname> <tagname>
 	检查或比较
 		git log
 			git log --<authorname>
 			git log --since={<时间>} --before={<时间>}
 		git reflog
 		git diff
+
+
 
 备注：
 git init 
@@ -200,6 +209,8 @@ git stash pop stash@{<数字>}
 git stash drop stash@{<数字>}
 无
 
+
+
 git branch（类别说明）
 分支操作，可以从任何分支和master中执行，继承被分支的历史
 
@@ -224,7 +235,7 @@ git checkout -b <branch> <SHA-1>
 git push <remote-name>:<branchname>
 只是快速将远程分支删除或添加
 
-git push <remote-name> <local-branch>:<remote-branch>
+git push <remote-name> <local-branch> : <remote-branch>
 将本地分支改动推送到远程分支
 
 git checkout（类别说明）
@@ -238,6 +249,8 @@ git merge（类别说明）
 
 git merge <branchname>
 融合分支，但你要先切换到主分支，然后再选择要与之融合的分支，融合后获取该branch的所有commit历史
+
+
 
 git log <branchname>
 输出该branch的所有commit历史，如果是分支，也会继承主branch的历史
@@ -253,6 +266,27 @@ git tag -a <版本号>
 
 git tag -a <版本号> <SHA-1>
 如果你忘记打包了，可以找回以前的某个commit打包
+
+git tag -d <版本号>
+将本地特定的tag删除
+
+git push --delete origin <tagname>
+将远程仓库的tag删除
+
+git tag -l
+将你的所有tag列出来
+
+git tag -l <匹配表达式>
+将某个系列的版本列出来，匹配表达式就跟regex差不多，如：git tag -l "v1.8.5*", 就会列出所有前缀为v1.8.5的版本
+
+git show <版本号>
+列出某个tag的信息
+
+git push origin <tagname>
+将tag推送到远程仓库
+
+git checkout -b <branchname> <tagname>
+你不能直接切换到某个tag(tag是不可修改的)，但你可以通过创建一个branch来操作某个特定tag，但由于是可commit的，这可能会对tag的内容造成影响，当然内容怎么修改也只是在该branch的范围内，对原来的tag不构成影响
 
 git fetch（类别说明）
 将远程仓库与本地仓库同步，同步回来的branch你不能checkout，但可以merge，可以diff，也可以log，不过当你对branch操作时，要用<仓库名>/<分支名>，如：git log github/master ^master（github是仓库名，默认是origin）
@@ -290,6 +324,9 @@ git remote rename [<旧仓库名>] [<新仓库名>]
 git remote set-url <仓库名> <新url>
 重设仓库URL
 
+
+
+
 git push（类别说明）
 推送本地仓库版本信息到remote仓库
 
@@ -301,6 +338,7 @@ git push <仓库名> <branchname>
 
 git log
 git log显示所在分支中的所有commit历史（reset后删掉的不算，要用reflog恢复），是从你最近一次commit出发，迭代输出上次commit，上上次commit，也就是当前commit前的历史，当你reset后，log会发生改变
+
 
 git log --oneline
 显示git log的简短版

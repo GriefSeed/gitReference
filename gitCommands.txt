@@ -188,7 +188,7 @@ git rm -f <filename>
 彻底干掉你的文件，缓冲区和本地硬盘文件都删掉，慎用
 
 git rm --cached <filename>
-仅仅从git仓库中中踢走文件，本地文件保留
+仅仅从git仓库中中踢走文件，本地文件保留，注意，github上只会显示仓库里的文件，也就是说不会再显示你rm后的文件；
 
 git rm --cached -r <folder>
 移除本地文件夹，r参数是指recursive，即递归移除文件夹下的文件；

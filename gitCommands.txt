@@ -95,6 +95,7 @@
 			git log --since={<时间>} --before={<时间>}
 		git reflog
 		git diff
+		git ls-tree -r <branchname>--name-only
 
 
 
@@ -143,6 +144,9 @@ git diff HEAD
 
 git diff stat
 以数字统计方式显示文件的改动，可以添加到git diff HEAD等命令后面，如git diff HEAD --stat
+
+git ls-tree -r <branchname>--name-only 
+查看被跟踪的文件，PS：写入.gitignore文件虽然不被更新，但他依然还是add，被跟踪的，要彻底点就要使用git rm --cached；
 
 git commit（类别说明）
 将stage里的文件信息提交到仓库，commit后git会记录下相应的SHA-1值，以后reset就是根据这些SHA-1值来回滚的

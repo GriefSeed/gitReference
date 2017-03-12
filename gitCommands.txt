@@ -30,6 +30,7 @@
 		git rm
 			git rm -f <filename>
 			git rm --cached <filename>
+			git rm --cached -r <folder>
 			git checkout <SHA-1> -- <filename>
 		git stash
 			git stash
@@ -184,6 +185,9 @@ git rm -f <filename>
 
 git rm --cached <filename>
 仅仅从git仓库中中踢走文件，本地文件保留
+
+git rm --cached -r <folder>
+移除本地文件夹，r参数是指recursive，即递归移除文件夹下的文件；
 
 git checkout <SHA-1> -- <filename>
 如果你不慎用git rm -f删除了本地文件，你可以用存在该文件的commit的SHA-1来恢复被删除的文件
